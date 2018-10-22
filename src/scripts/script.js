@@ -14,7 +14,9 @@ const fLinkPrev = document.querySelector(".link-prev"), // footer link "prev"
   menuButton = document.querySelector(".menu-button"),
   main = document.querySelector(".main"),
   mainMenu = document.querySelector(".main_menu"),
-  mainLinks = document.querySelectorAll(".main-link");
+  mainLinks = document.querySelectorAll(".main_link"),
+  html = document.querySelector("html"),
+  body = document.querySelector("body");
 
 let current = 0; // current section
 
@@ -72,33 +74,59 @@ const animateCurrentText = current => {
 menuButton.addEventListener("click", () => {
   mainMenu.classList.toggle("main_menu-active");
   main.classList.toggle("main-active");
+  menuButton.classList.toggle("button-active");
+  menuOpenClose();
 });
 // hide menu
 const hideMenu = () => {
   mainMenu.classList.remove("main_menu-active");
   main.classList.remove("main-active");
+  menuOpenClose();
 };
 
 // place sections next to each other in row
-[].forEach.call(content, (el, i) => {
-  el.style.left = i * 100 + "%";
-});
+if (html.clientWidth > 620) {
+  [].forEach.call(content, (el, i) => {
+    el.style.left = i * 100 + "%";
+  });
+}
 
 // display selected section
 const swipeSection = current => {
-  [].forEach.call(content, el => {
-    el.style.marginLeft = -current * 100 + "%";
-  });
+  if (html.clientWidth > 620) {
+    [].forEach.call(content, el => {
+      el.style.marginLeft = -current * 100 + "%";
+    });
+  }
+  // if (html.clientWidth < 620) {
+  //   [].forEach.call(content, el => {
+  //     el.style.marginTop = -current * 100 + "%";
+  //   });
+  // }
 };
 
 // side menu links
 [].forEach.call(mainLinks, (link, index) => {
-  link.addEventListener("click", () => {
+  link.addEventListener("click", e => {
+    if (html.clientWidth > 620) {
+      e.preventDefault();
+    }
     current = index;
     swipe(current);
+    menuButton.classList.remove("button-active");
+    hideMenu();
   });
 });
 
+const menuOpenClose = () => {
+  const bars = `<i class="fas fa-bars"></i>`;
+  const cross = `<i class="fas fa-times"></i>`;
+
+  menuButton.innerHTML != bars
+    ? (menuButton.innerHTML = bars)
+    : (menuButton.innerHTML = cross);
+  body.classList.toggle("ovhide");
+};
 const swipe = direction => {
   if (direction === "left") {
     current <= 0 ? 0 : current--; // swipe left
