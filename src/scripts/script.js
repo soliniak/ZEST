@@ -140,12 +140,11 @@ const swipeSection = current => {
 };
 
 // side menu links
-[].forEach.call(mainLinks, (link, index) => {
+[].forEach.call(mainLinks, (link, current) => {
   link.addEventListener("click", e => {
     if (html.clientWidth > 620) {
       e.preventDefault();
     }
-    current = index;
     swipe(current);
     menuTrigger();
     changeBurger();
