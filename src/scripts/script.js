@@ -51,7 +51,7 @@ fLinkNext.addEventListener("click", () => {
 
 // start first animation after page's loaded
 window.addEventListener("DOMContentLoaded", () => {
-  animateCurrentText(0); // trigger text animation
+  animateCurrentText(0); // trigger first text animation
 });
 
 // animate current section's title and side text links
@@ -72,16 +72,50 @@ const animateCurrentText = current => {
 
 // open / hide menu
 menuButton.addEventListener("click", () => {
-  mainMenu.classList.toggle("main_menu-active");
-  main.classList.toggle("main-active");
-  menuButton.classList.toggle("button-active");
-  menuOpenClose();
+  menuTrigger();
 });
+
+// open close menu
+const menuTrigger = () => {
+  if (mainMenu.dataset.status === "closed") {
+    openMenu();
+    mainMenu.dataset.status = "active";
+  } else {
+    closeMenu();
+    mainMenu.dataset.status = "closed";
+  }
+};
+
 // hide menu
-const hideMenu = () => {
-  mainMenu.classList.remove("main_menu-active");
-  main.classList.remove("main-active");
-  menuOpenClose();
+const closeMenu = () => {
+  if (mainMenu.dataset.status === "active") {
+    changeBurger();
+    mainMenu.classList.remove("main_menu-active");
+    main.classList.remove("main-active");
+    menuButton.classList.remove("button-active");
+    body.classList.remove("ovhide");
+  }
+};
+
+// show menu
+const openMenu = () => {
+  if (mainMenu.dataset.status === "closed") {
+    changeBurger();
+    mainMenu.classList.add("main_menu-active");
+    main.classList.add("main-active");
+    menuButton.classList.add("button-active");
+    body.classList.add("ovhide");
+  }
+};
+
+// change menu icon
+const changeBurger = () => {
+  const bars = `<i class="fas fa-bars"></i>`;
+  const cross = `<i class="fas fa-times"></i>`;
+
+  menuButton.innerHTML != bars
+    ? (menuButton.innerHTML = bars)
+    : (menuButton.innerHTML = cross);
 };
 
 // place sections next to each other in row
@@ -113,20 +147,11 @@ const swipeSection = current => {
     }
     current = index;
     swipe(current);
-    menuButton.classList.remove("button-active");
-    hideMenu();
+    menuTrigger();
+    changeBurger();
   });
 });
 
-const menuOpenClose = () => {
-  const bars = `<i class="fas fa-bars"></i>`;
-  const cross = `<i class="fas fa-times"></i>`;
-
-  menuButton.innerHTML != bars
-    ? (menuButton.innerHTML = bars)
-    : (menuButton.innerHTML = cross);
-  body.classList.toggle("ovhide");
-};
 const swipe = direction => {
   if (direction === "left") {
     current <= 0 ? 0 : current--; // swipe left
@@ -137,5 +162,5 @@ const swipe = direction => {
   }
   swipeSection(current); // trigger swipe
   animateCurrentText(current); // trigger text animation
-  hideMenu(); // hide menu if opened
+  closeMenu(); // hide menu if opened
 };

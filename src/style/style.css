@@ -7,7 +7,8 @@ html {
   overflow: hidden; }
 
 body {
-  width: 100vw; }
+  width: 100vw;
+  position: relative; }
 
 .flex-center-center {
   display: flex;
@@ -155,7 +156,7 @@ a, .menu-button {
   margin: 0 5px; }
 
 .main {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   position: relative;
   transition: all .4s ease; }
@@ -359,4 +360,15 @@ a, .menu-button {
   .social {
     display: flex;
     justify-content: space-between;
-    width: 100%; } }
+    width: 100%; }
+  .footer {
+    position: absolute; }
+    .footer_nav {
+      display: none; }
+    .footer_contact {
+      flex-direction: column;
+      font-size: 3rem; }
+    .footer_mail {
+      margin-top: 2rem; }
+      .footer_mail a {
+        font-size: 3rem; } }

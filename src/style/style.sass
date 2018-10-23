@@ -11,6 +11,7 @@ html
 
 body
   width: 100vw
+  position: relative
   // background-color: red
 
 // flex config
@@ -174,7 +175,7 @@ a, .menu-button
 //----------------------------
 .main
   // border: 1px solid yellow
-  height: 100vh
+  height: 100%
   width: 100%
   position: relative
   transition: all .4s ease
@@ -388,3 +389,15 @@ a, .menu-button
     display: flex
     justify-content: space-between
     width: 100%
+  .footer
+    position: absolute
+    &_nav
+      display: none
+    &_contact
+      flex-direction: column
+      font-size: 3rem
+    &_mail
+      margin-top: 2rem
+      & a
+        font-size: 3rem
+    
