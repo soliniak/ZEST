@@ -7,10 +7,10 @@ $segoe-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 html
   font-size: 16px
   scroll-behavior: smooth
-  overflow: hidden
+  // overflow: hidden
 
 body
-  width: 100vw
+  width: 100%
   position: relative
   // background-color: red
 
@@ -37,7 +37,11 @@ body
 
 .header, .footer 
   padding: $basic-padding
-
+ 
+// .header, .footer
+//   border: 1px solid yellow
+// .main
+//   border: 4px solid green
 //-------------------
 //      header   <---
 //-------------------
@@ -207,7 +211,7 @@ a, .menu-button
 
 .container
   // border: 1px solid black
-  height: 100vh
+  height: 100%
   width: 100%
 
 .main-active
@@ -220,7 +224,7 @@ a, .menu-button
   display: flex
   align-items: center
   justify-content: center
-  position: absolute
+  position: relative
   transition: all 1s ease
   &_title    
     width: 100%

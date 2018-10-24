@@ -11,6 +11,7 @@ const fLinkPrev = document.querySelector(".link-prev"), // footer link "prev"
   sideTitleLeft = document.querySelectorAll(".side_title-left"),
   sideTitleRight = document.querySelectorAll(".side_title-right"),
   content = document.querySelectorAll(".content"),
+  container = document.querySelector(".container"),
   menuButton = document.querySelector(".menu-button"),
   main = document.querySelector(".main"),
   mainMenu = document.querySelector(".main_menu"),
@@ -49,9 +50,13 @@ fLinkNext.addEventListener("click", () => {
   });
 });
 
-// start first animation after page's loaded
+// start first animation, change style for horizontal view
 window.addEventListener("DOMContentLoaded", () => {
   animateCurrentText(0); // trigger first text animation
+  html.style.overflow = "hidden";
+  [].forEach.call(content, section => {
+    section.style.position = "absolute";
+  });
 });
 
 // animate current section's title and side text links
