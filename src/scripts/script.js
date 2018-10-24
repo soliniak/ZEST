@@ -54,6 +54,7 @@ fLinkNext.addEventListener("click", () => {
 window.addEventListener("DOMContentLoaded", () => {
   animateCurrentText(0); // trigger first text animation
   html.style.overflow = "hidden";
+  menuButton.style.display = "inline-block";
   [].forEach.call(content, section => {
     section.style.position = "absolute";
   });

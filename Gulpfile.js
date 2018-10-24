@@ -22,6 +22,7 @@ gulp.task("styles", function() {
     .pipe(gulp.dest(baseDirVar + "/style/"));
 });
 
+// run separately #1
 gulp.task("prefix", function() {
   gulp
     .src("style/**/*.css")
@@ -34,6 +35,7 @@ gulp.task("prefix", function() {
     .pipe(gulp.dest("dist"));
 });
 
+// run separately #2
 gulp.task("mini", function() {
   return gulp
     .src("**/*")

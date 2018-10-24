@@ -210,32 +210,31 @@ a, .menu-button
 .top_bar-link, .social_link
   display: inline-block
 
-.container
-  // border: 1px solid black
-  height: 100%
-  width: 100%
+
 
 .main-active
   transform: translateX(50%)
-.content
-  // border: 3px solid purple
-  height: 100vh
-  min-width: 100%
-  // background-color: pink
-  display: flex
-  align-items: center
-  justify-content: center
-  position: relative
-  transition: all 1s ease
-  &_title    
-    width: 100%
-    height: 100%
-    // border: 1px solid red
-    display: flex
-    align-items: center
-    justify-content: center
-    position: relative
-    overflow: hidden
+.works
+    &_container
+        width: 100%
+        height: 100%
+    
+    &_gallery
+        border: 3px solid purple
+        height: 100%
+        min-width: 100%
+        // background-color: pink
+        display: flex
+        align-items: center
+        justify-content: center
+        // flex-direction: column
+        position: relative
+        transition: all 1s ease
+        margin-top: 5rem
+    &_header
+        align-self: flex-start
+
+    
 %title-font
   font-family: $segoe-font
   font-weight: bold
