@@ -1,47 +1,10 @@
-$basic-padding: 2rem
-$segoe-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+@import base.sass
+@import links.sass
+@import media.sass
 
-*
-  box-sizing: border-box
 
-html
-  font-size: 16px
-  scroll-behavior: smooth
-  // overflow: hidden
-
-body
-  width: 100%
-  position: relative
-  // background-color: red
-
-// flex config
-.flex-center-center
-  display: flex
-  align-items: center
-  justify-content: center
-
-.flex-center-between
-  display: flex
-  align-items: center
-  justify-content: space-between
-  
-.flex-center-right
-  display: flex
-  align-items: flex-end
-  justify-content: flex-end
-
-.flex-center-around
-  display: flex
-  align-items: center
-  justify-content: space-around
-
-.header, .footer 
-  padding: $basic-padding
- 
-// .header, .footer
-//   border: 1px solid yellow
-// .main
-//   border: 4px solid green
+.header_link, .menu-button
+  color: #fff
 //-------------------
 //      header   <---
 //-------------------
@@ -64,86 +27,6 @@ body
     display: inline
     padding: 0 2rem
     text-transform: capitalize
-
-// LINKS    
-a, .menu-button
-  font-family: myriad pro
-  color: #fff
-  text-transform: capitalize
-  background-color: transparent
-  border: none
-  font-size: 1rem
-  cursor: pointer
-  &:hover
-    text-decoration: underline
-.menu-button
-  display: none
-.top_bar-link a, .social_link a
-  font-family: $segoe-font
-  font-size: 1.5rem
-  margin-right: 1.5rem
-  color: #000
-
-.button-active .burger-icon,.button-active .burger-icon:before,.button-active .burger-icon:after
-  background-color: black !important
-
-.button-active .burger-icon
-  background-color: transparent !important
-.button-active .burger-icon:before
-  transform: rotate(45deg)
-  transform-origin: top right
-  top: 0
-  left: 0
-  width: 30px
-.button-active .burger-icon:after
-  transform: rotate(-45deg)
-  transform-origin: bottom left
-  top: 0
-  left: 5px
-  width: 30px
-.lang_link a
-  font-family: $segoe-font
-  font-weight: bold
-  font-size: 1.5rem
-  margin-right: 1rem
-  color: #000
-
-.main_link img //it's an image
-  margin-bottom: 1rem
-  transition: transform .4s ease
-  &:hover
-    transform: translateX(50px)
-
-.burger-icon
-  background-color: #fff
-  width: 15px
-  height: 1px
-  display: inline-block
-  position: relative
-  left: -5px
-  &:before
-    content: ''
-    width: 15px
-    height: 1px
-    background-color: #fff
-    position: absolute
-    top: -5px
-    left: 3px
-    display: inline-block
-    transition: all .2s ease
-  &:after
-    content: ''
-    width: 15px
-    height: 1px
-    background-color: #fff
-    position: absolute
-    top: -10px
-    left: 0
-    display: inline-block
-.menu-button:hover
-  .burger-icon:before
-    left: -3px
-   
 
 //-------------------
 //      footer   <---
@@ -207,8 +90,6 @@ a, .menu-button
   align-items: center
   justify-content: space-between
 
-.top_bar-link, .social_link
-  display: inline-block
 
 .container
   // border: 1px solid black
@@ -319,90 +200,3 @@ a, .menu-button
   background-size: contain
   background-repeat: no-repeat
   background-position: center center
-
-
-// IPHONE 5
-@media ( max-width: 320px)
-  html
-    font-size: 4px
-    overflow: visible
-  .container
-    height: auto
-    display: flex
-    flex-direction: column
-  .content
-    position: relative
-  .main_link-img
-    height: 11rem
-  .header
-    position: fixed
-    top: 0
-    left: 0
-  .header_menu
-    justify-content: flex-end
-    width: 100%
-    display: flex
-  .header_link
-    display: none
-  .main_menu
-    overflow: hidden
-    transform: translate(0, -100%)
-    width: 100%
-    &-active
-      transform: translate(0, 0)
-  .main_link
-    display: flex
-    align-items: flex-start
-    justify-content: flex-start
-  .header_nav
-    position: relative
-    z-index: 900
-    width: 50px
-    float: right
-  .main-active
-    transform: translateX(0)
-  .ovhide
-    overflow: hidden
-  .top_bar-link a, .social_link a
-    font-size: 5rem
-  .top_bar-link
-    margin-right: 2rem
-  .header_logo
-    display: none
-  .menu_header
-    display: flex
-    flex-direction: column
-    align-items: flex-start
-  .top-bar-lang
-    margin-top: 2rem
-  .lang_link a
-    font-size: 3.5rem
-  .menu-button
-    position: relative
-    top: 25px
-    font-size: 8rem
-    z-index: 800
-
-  .button-active
-    color: #000
-    padding: 0
-  .side_title-right, .side_title-left
-    display: none
-  .menu_footer
-    width: 100%
-  .social
-    display: flex
-    justify-content: space-between
-    width: 100%
-  .footer
-    position: absolute
-    &_nav
-      display: none
-    &_contact
-      flex-direction: column
-      font-size: 3rem
-    &_mail
-      margin-top: 2rem
-      & a
-        font-size: 3rem
-    

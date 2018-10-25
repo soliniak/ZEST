@@ -1,62 +1,35 @@
-$basic-padding: 2rem
-$segoe-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+@import base.sass
+@import links.sass
+@import media.sass
+@import modal.sass
 
-*
-  box-sizing: border-box
-
-html
-  font-size: 16px
-  scroll-behavior: smooth
-  // overflow: hidden
-
-body
-  width: 100%
-  position: relative
-  // background-color: red
-
-// flex config
-.flex-center-center
-  display: flex
-  align-items: center
-  justify-content: center
-
-.flex-center-between
-  display: flex
-  align-items: center
-  justify-content: space-between
-  
-.flex-center-right
-  display: flex
-  align-items: flex-end
-  justify-content: flex-end
-
-.flex-center-around
-  display: flex
-  align-items: center
-  justify-content: space-around
-
-.header, .footer 
-  padding: $basic-padding
- 
-// .header, .footer
-//   border: 1px solid yellow
-// .main
-//   border: 4px solid green
+$menuWidth: 220px
+$width: 1200px
 //-------------------
 //      header   <---
 //-------------------
+
+body
+  display: flex
+  justify-content: center
+  align-items: center
+
 .header
   position: fixed
   top: 0
   left: 0
   width: 100%
+  height: $headerHeight
   z-index: 700
+  display: flex
+  align-items: center
+  justify-content: center
   // border: 1px solid yellow
   &_nav
     display: flex
     align-items: center
     justify-content: space-between
-    width: 100%
+    width: $width
     // border: 1px solid black
 
 .header_menu
@@ -64,86 +37,6 @@ body
     display: inline
     padding: 0 2rem
     text-transform: capitalize
-
-// LINKS    
-a, .menu-button
-  font-family: myriad pro
-  color: #fff
-  text-transform: capitalize
-  background-color: transparent
-  border: none
-  font-size: 1rem
-  cursor: pointer
-  &:hover
-    text-decoration: underline
-.menu-button
-  display: none
-.top_bar-link a, .social_link a
-  font-family: $segoe-font
-  font-size: 1.5rem
-  margin-right: 1.5rem
-  color: #000
-
-.button-active .burger-icon,.button-active .burger-icon:before,.button-active .burger-icon:after
-  background-color: black !important
-
-.button-active .burger-icon
-  background-color: transparent !important
-.button-active .burger-icon:before
-  transform: rotate(45deg)
-  transform-origin: top right
-  top: 0
-  left: 0
-  width: 30px
-.button-active .burger-icon:after
-  transform: rotate(-45deg)
-  transform-origin: bottom left
-  top: 0
-  left: 5px
-  width: 30px
-.lang_link a
-  font-family: $segoe-font
-  font-weight: bold
-  font-size: 1.5rem
-  margin-right: 1rem
-  color: #000
-
-.main_link img //it's an image
-  margin-bottom: 1rem
-  transition: transform .4s ease
-  &:hover
-    transform: translateX(50px)
-
-.burger-icon
-  background-color: #fff
-  width: 15px
-  height: 1px
-  display: inline-block
-  position: relative
-  left: -5px
-  &:before
-    content: ''
-    width: 15px
-    height: 1px
-    background-color: #fff
-    position: absolute
-    top: -5px
-    left: 3px
-    display: inline-block
-    transition: all .2s ease
-  &:after
-    content: ''
-    width: 15px
-    height: 1px
-    background-color: #fff
-    position: absolute
-    top: -10px
-    left: 0
-    display: inline-block
-.menu-button:hover
-  .burger-icon:before
-    left: -3px
-   
 
 //-------------------
 //      footer   <---
@@ -155,23 +48,45 @@ a, .menu-button
   display: flex
   flex-direction: column
   width: 100%
-  // border: 1px solid yellow
-
-.footer_contact
-  width: 100%
-  // border: 1px solid black
-  color: #fff
+  height: $footerHeight
+  // border: 1px solid green
   font-family: $segoe-font
-
-.footer_nav
-  margin-bottom: 3rem
-  color: #fff
-  font-family: $segoe-font
-
-.footer_link
-  color: #fff
-  font-family: $segoe-font
-
+  display: flex
+  align-items: center
+  justify-content: center
+  &_data
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: $width
+  &_contact
+    width: 1200px
+    display: flex
+    justify-content: space-between
+    align-items: center    
+    // border: 1px solid black
+    margin-top: 5rem
+    color: #000
+    font-family: $segoe-font
+    font-size: .8rem
+  &_logo
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    // border: 1px solid black
+  &_title
+    margin-bottom: 2rem
+  &_link
+    color: #000
+    font-family: $segoe-font
+.logo_sidetext
+  // border: 1px solid orange
+  margin-left: 50px
+  & .sidetext
+    font-size: 2.5rem
+    text-transform: uppercase
+    font-weight: bold
 .link_separator
   margin: 0 5px
 
@@ -181,227 +96,124 @@ a, .menu-button
 .main
   // border: 1px solid yellow
   height: 100%
-  width: 100%
+  width: $width
   position: relative
   transition: all .4s ease
-  &_menu
+  overflow: hidden
+.main_menu
     position: absolute
-    padding: 7rem 7rem 2rem 7rem
-    width: 50%
+    padding: 2rem 2rem 1rem 2rem
+    width: $menuWidth
     left: 0
+    // border: 1px solid red
     top: 0
-    height: 100vh
+    height: calc(100vh - #{$footerHeight})
     background-color: #fff
-    transform: translateX(-100%)
+    transform: translateX(-220px)
     z-index: 800
     transition: all .4s ease
     display: flex
     align-items: flex-start
-    justify-content: space-between
+    justify-content: flex-start
     flex-direction: column
     &-active
       transform: translateX(0)
 .menu_header
   width: 100%
+  // display: flex
+  // align-items: flex-start
+  // justify-content: space-between
+  // flex-direction: column
+  display: block
+  height: 200px
+  // border: 1px solid red
+.page_title
+  font-size: 2rem
+  font-weight: bold
+  text-transform: uppercase
+  font-family: $segoe-font
+  margin-top: 3rem
+.main_links
+  // border: 1px solid green
+  height: 100%
+  margin-top: 3rem
+.main_link
+  line-height: 2rem
+  & a
+    text-transform: uppercase
+.social 
   display: flex
+  align-items: flex-start
+  justify-content: flex-start
+  flex-direction: column
+  margin-bottom: 4rem
+  & a
+    font-family: $segoe-font
+    text-transform: uppercase
+    font-size: 1rem
+    line-height: 2rem
+.gallery_element, .gallery_description
+  height: auto
+  width: 600px
+  padding: 100px
+  object-fit: contain
+  // border: 1px solid pink
+.gallery_element
+  cursor: pointer
+  &:hover
+    background-color: rgba(250,250,250,.7)
+
+.nav_prev, .nav_next
+  background: none
+  border: none
+  cursor: pointer
+
+.gallery_container
+  width: auto
+  height: 80%
+  display: flex
+  flex-direction: row
   align-items: center
-  justify-content: space-between
+  position: absolute
+  left: 0
+  transition: all .4s ease
+  overflow: hidden
+  // border: 1px solid green
 
-.top_bar-link, .social_link
-  display: inline-block
-
-
+.gallery_nav
+  position: absolute
+  bottom: 150px
+  right: 0
+  background-color: white
 
 .main-active
-  transform: translateX(50%)
+  transform: translateX($menuWidth)
+
 .works
-    &_container
-        width: 100%
-        height: 100%
-    
-    &_gallery
-        border: 3px solid purple
-        height: 100%
-        min-width: 100%
-        // background-color: pink
-        display: flex
-        align-items: center
-        justify-content: center
-        // flex-direction: column
-        position: relative
-        transition: all 1s ease
-        margin-top: 5rem
-    &_header
-        align-self: flex-start
-
-    
-%title-font
-  font-family: $segoe-font
-  font-weight: bold
-  font-size: 10rem
-  color: #fff
-  text-transform: capitalize   
-  transition: all 1s ease
-
-.main_title
-  @extend %title-font
-
-.side_title
-  position: absolute
-  opacity: .3
-  @extend %title-font
-  &-left
-    right: 85%
-    & a
-      font-size: 10rem
-      font-family: $segoe-font  
-  &-right
-    left: 85%
-    & a
-      font-size: 10rem
-      font-family: $segoe-font    
-// left title animation
-.left-title-animation
-  animation: leftTitleAnimation 4s ease .1s forwards
-  opacity: 0
-@keyframes leftTitleAnimation
-  0%
-    opacity: 0
-  100%
-    opacity: .3
-
-// right title animatio
-.right-title-animation
-  animation: rightTitleAnimation 4s ease .1s forwards
-  opacity: 0
-@keyframes rightTitleAnimation
-  0%
-    opacity: 0
-  100%
-    opacity: .3
-    
-// main title animation
-.main-title-animation
-  animation: titleAnimation 1s ease .1s forwards
-  opacity: 0
-  transform: translateX(200%)
-
-@keyframes titleAnimation
-  0%
-    opacity: 0
-    transform: translateX(200%)
-  100%
-    opacity: 1
-    transform: translateX(0)
-
-
-.letter-z
-  background: url('../img/z-img.png'), #cc2b23
-  background-size: contain
-  background-repeat: no-repeat
-  background-position: center center
-
-.letter-e
-  background: url('../img/e-img.png'), #1c5238
-  background-size: contain
-  background-repeat: no-repeat
-  background-position: center center
-
-.letter-s
-  background: url('../img/s-img.png'), #95724c
-  background-size: contain
-  background-repeat: no-repeat
-  background-position: center center
-
-.letter-t
-  background: url('../img/t-img.png'), #7b6379
-  background-size: contain
-  background-repeat: no-repeat
-  background-position: center center
-
-
-// IPHONE 5
-@media ( max-width: 320px)
-  html
-    font-size: 4px
-    overflow: visible
-  .container
-    height: auto
+  &_header
+    font-size: 1.5rem
+    font-family: $segoe-font
+    line-height: 2rem
     display: flex
-    flex-direction: column
-  .content
-    position: relative
-  .main_link-img
-    height: 11rem
-  .header
-    position: fixed
-    top: 0
-    left: 0
-  .header_menu
-    justify-content: flex-end
-    width: 100%
-    display: flex
-  .header_link
-    display: none
-  .main_menu
-    overflow: hidden
-    transform: translate(0, -100%)
-    width: 100%
-    &-active
-      transform: translate(0, 0)
-  .main_link
-    display: flex
-    align-items: flex-start
-    justify-content: flex-start
-  .header_nav
-    position: relative
-    z-index: 900
-    width: 50px
-    float: right
-  .main-active
-    transform: translateX(0)
-  .ovhide
-    overflow: hidden
-  .top_bar-link a, .social_link a
-    font-size: 5rem
-  .top_bar-link
-    margin-right: 2rem
-  .header_logo
-    display: none
-  .menu_header
-    display: flex
-    flex-direction: column
-    align-items: flex-start
-  .top-bar-lang
-    margin-top: 2rem
-  .lang_link a
-    font-size: 3.5rem
-  .menu-button
-    position: relative
-    top: 25px
-    font-size: 8rem
-    z-index: 800
-
-  .button-active
-    color: #000
-    padding: 0
-  .side_title-right, .side_title-left
-    display: none
-  .menu_footer
-    width: 100%
-  .social
-    display: flex
-    justify-content: space-between
-    width: 100%
-  .footer
-    position: absolute
-    &_nav
-      display: none
-    &_contact
+    align-items: center
+    justify-content: center
+    // padding: 100px
+  &_container
+      width: 100%
+      height: calc(100% - #{$footerHeight} - #{$headerHeight})    
+  &_gallery
+      // border: 3px solid purple
+      height: 100%
+      width: $width
+      overflow: hidden
+      // background-color: pink
+      display: flex
+      align-items: center
+      justify-content: center
       flex-direction: column
-      font-size: 3rem
-    &_mail
-      margin-top: 2rem
-      & a
-        font-size: 3rem
-    
+      align-items: center
+      justify-content: center
+      position: relative
+      transition: all 1s ease
+      margin-top: $headerHeight
+

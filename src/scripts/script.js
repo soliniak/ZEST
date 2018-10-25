@@ -55,6 +55,7 @@ window.addEventListener("DOMContentLoaded", () => {
   animateCurrentText(0); // trigger first text animation
   html.style.overflow = "hidden";
   menuButton.style.display = "inline-block";
+  console.log("Button");
   [].forEach.call(content, section => {
     section.style.position = "absolute";
   });
@@ -116,8 +117,8 @@ const openMenu = () => {
 
 // change menu icon
 const changeBurger = () => {
-  const bars = `<i class="fas fa-bars"></i>`;
-  const cross = `<i class="fas fa-times"></i>`;
+  const bars = `<i class="fas fa-bars"></i> Menu`;
+  const cross = `<i class="fas fa-times"></i> Menu`;
 
   menuButton.innerHTML != bars
     ? (menuButton.innerHTML = bars)
