@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -13,6 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="style/reset.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="style/works.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="style/works-media.css" />
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
     crossorigin="anonymous">
 </head>
@@ -26,7 +28,10 @@
       <ul class="header_menu">
         <li class="header_menu_item"><a href="works.html" class="header_link link-active">works</a></li>
         <li class="header_menu_item"><a href="index.html" class="header_link">about</a></li>
-        <li class="header_menu_item"><button class="menu-button"><i class="fas fa-bars"></i> Menu</button></li>
+        <li class="header_menu_item"><button class="menu-button" aria-label="menu" data-status="active" aria-expanded="false"><i
+              class="fas fa-bars"></i>
+            <span class="menu-text">Menu</span>
+          </button></li>
       </ul>
     </nav>
 
@@ -44,6 +49,7 @@
         <!-- SIDE MENU - LINKS TO SECTIONS -->
         <div class="main_links">
           <ul>
+            <li class="main_link"><a href="index.html">About</a></li>
             <li class="main_link"><a href="#">All works</a></li>
             <li class="main_link"><a href="#">Creative</a></li>
             <li class="main_link"><a href="#">Illustrations</a></li>
@@ -63,12 +69,12 @@
       <!-- ZEPHIREST - SECTION #1 -->
       <section class="works_gallery">
         <div class="gallery_container">
-          <!-- <h2 class="works_header gallery_description">
-                <p>
-                  Hello, we are <span class="bold">ZEST</span>. We help our clients to stand out, enable
-                  them reach their communication goals and make them like the digital world.
-                </p>
-              </h2> -->
+          <h2 class="works_header">
+            <p>
+              Hello, we are <span class="bold">ZEST</span>. We help our clients to stand out, enable
+              them reach their communication goals and make them like the digital world.
+            </p>
+          </h2>
           <img src="img/gallery/6.jpg" alt="Lady in white underware." class="gallery_element">
           <img src="img/gallery/0.jpg" alt="Girl posing in summer black dress." class="gallery_element">
           <img src="img/gallery/1.jpg" alt="Lady standing in suit standing next to orange wall." class="gallery_element">

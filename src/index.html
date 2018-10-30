@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -13,6 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="style/reset.css" />
   <link rel="stylesheet" type="text/css" media="screen" href="style/style.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="style/index-media.css" />
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
     crossorigin="anonymous">
 </head>
@@ -26,16 +28,19 @@
       <ul class="header_menu">
         <li class="header_menu_item"><a href="works.html" class="header_link">works</a></li>
         <li class="header_menu_item"><a href="index.html" class="header_link link-active">about</a></li>
-        <li class="header_menu_item"><button class="menu-button"><i class="fas fa-bars"></i> Menu</button></li>
+        <li class="header_menu_item"><button class="menu-button" aria-controls="main_menu" aria-expanded="false"
+            aria-label="menu" data-status="active"><i class="fas fa-bars"></i>
+            <span class="menu-text">Menu</span>
+          </button></li>
       </ul>
     </nav>
     <!-- SIDE MENU -->
-    <div class="main_menu" data-status="closed">
+    <div class="main_menu" id="main_menu" data-status="closed" aria-hidden="true">
       <div class="menu_header">
         <!-- SIDE MENU - WORKS, ABOUT -->
         <div class="top-bar-links">
           <ul class="links_container">
-            <li class="top_bar-link"><a href="#">Works</a></li>
+            <li class="top_bar-link"><a href="works.html">Works</a></li>
             <li class="top_bar-link"><a href="#">About</a></li>
           </ul>
         </div>
@@ -106,9 +111,9 @@
   <footer class="footer flex-center-right">
     <!-- FOOTER SECTIONS NAVIGATION -->
     <nav class="footer_nav flex-center-right">
-      <a href="#" class="footer_link link-prev">Prev </a>
+      <a href="#" role="button" class="footer_link link-prev">Prev </a>
       <span class="link_separator">/</span>
-      <a href="#" class="footer_link link-next">Next</a>
+      <a href="#" role="button" class="footer_link link-next">Next</a>
     </nav>
     <!-- FOOTER COPYRIGHTS AND CONTACT -->
     <div class="footer_contact flex-center-between">

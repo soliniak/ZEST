@@ -1,19 +1,17 @@
 @import base.sass
 @import links.sass
-@import media.sass
 @import modal.sass
 
 $menuWidth: 220px
 $width: 1200px
-//-------------------
-//      header   <---
-//-------------------
 
 body
   display: flex
   justify-content: center
   align-items: center
-
+//-------------------
+//      header   <---
+//-------------------
 .header
   position: fixed
   top: 0
@@ -197,7 +195,7 @@ body
     display: flex
     align-items: center
     justify-content: center
-    // padding: 100px
+    padding: 1rem
   &_container
       width: 100%
       height: calc(100% - #{$footerHeight} - #{$headerHeight})    

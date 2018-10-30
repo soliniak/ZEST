@@ -14,7 +14,9 @@ const menuButton = document.querySelector(".menu-button"),
 
 // start first animation, change style for horizontal view
 window.addEventListener("DOMContentLoaded", () => {
-  html.style.overflow = "hidden";
+  if (html.clientWidth >= 1200) {
+    html.style.overflow = "hidden";
+  }
   menuButton.style.display = "inline-block";
 });
 
@@ -27,10 +29,8 @@ menuButton.addEventListener("click", () => {
 const menuTrigger = () => {
   if (mainMenu.dataset.status === "closed") {
     openMenu();
-    mainMenu.dataset.status = "active";
   } else {
     closeMenu();
-    mainMenu.dataset.status = "closed";
   }
 };
 
@@ -41,6 +41,9 @@ const closeMenu = () => {
     galleryContainer.classList.remove("main-active");
     menuButton.classList.remove("button-active");
     body.classList.remove("ovhide");
+    menuButton.setAttribute("aria-expanded", "false");
+    mainMenu.setAttribute("aria-hidden", "true");
+    mainMenu.dataset.status = "closed";
   }
 };
 
@@ -50,17 +53,24 @@ const openMenu = () => {
     mainMenu.classList.add("main_menu-active");
     galleryContainer.classList.add("main-active");
     menuButton.classList.add("button-active");
+    menuButton.setAttribute("aria-expanded", "true");
     body.classList.add("ovhide");
+    mainMenu.setAttribute("aria-hidden", "true");
+    mainMenu.dataset.status = "active";
   }
 };
 
 const changeBurger = () => {
-  const bars = `<i class="fas fa-bars"></i> Menu`;
-  const cross = `<i class="fas fa-times"></i> Menu`;
+  const bars = `<i class="fas fa-bars"></i> <span class="menu-text">Menu</span>`;
+  const cross = `<i class="fas fa-times"></i> <span class="menu-text">Menu</span>`;
 
-  menuButton.innerHTML != bars
-    ? (menuButton.innerHTML = bars)
-    : (menuButton.innerHTML = cross);
+  if (menuButton.dataset.status == "active") {
+    menuButton.innerHTML = cross;
+    menuButton.dataset.status = "closed";
+  } else {
+    menuButton.innerHTML = bars;
+    menuButton.dataset.status = "active";
+  }
 };
 
 buttonPrev.addEventListener("click", () => {
@@ -88,9 +98,13 @@ const swipe = direction => {
 
 [].forEach.call(galleryElements, item => {
   item.addEventListener("click", () => {
+    html.style.overflow = "hidden";
+
     let imageContainer = document.createElement("div");
     imageContainer = body.appendChild(imageContainer);
     imageContainer.classList.add("imageContainer");
+    let top = window.scrollY || window.pageYOffset;
+    imageContainer.style.top = top + "px";
 
     let image = document.createElement("img");
     image = imageContainer.appendChild(image);
@@ -102,12 +116,13 @@ const swipe = direction => {
     closeBtn.classList.add("closeBtn");
     closeBtn.innerHTML = `<i class="fas fa-times"></i>`;
 
-    closeBtn.addEventListener("click", () => {
-      body.removeChild(imageContainer);
-    });
+    // closeBtn.addEventListener("click", () => {
+    //   body.removeChild(imageContainer);
+    // });
     imageContainer.addEventListener("click", e => {
-      if (!image.contains(e.target)) {
+      if (!image.contains(e.target) || closeBtn.contains(e.target)) {
         body.removeChild(imageContainer);
+        html.style.overflow = "initial";
       }
     });
   });

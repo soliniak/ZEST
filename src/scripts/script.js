@@ -53,12 +53,15 @@ fLinkNext.addEventListener("click", () => {
 // start first animation, change style for horizontal view
 window.addEventListener("DOMContentLoaded", () => {
   animateCurrentText(0); // trigger first text animation
-  html.style.overflow = "hidden";
+  if (html.clientWidth > 620) {
+    html.style.overflow = "hidden";
+    [].forEach.call(content, (section, i) => {
+      section.style.left = i * 100 + "%";
+      section.style.position = "absolute";
+    });
+  }
   menuButton.style.display = "inline-block";
-  console.log("Button");
-  [].forEach.call(content, section => {
-    section.style.position = "absolute";
-  });
+  // place sections next to each other in row
 });
 
 // animate current section's title and side text links
@@ -100,7 +103,11 @@ const closeMenu = () => {
     mainMenu.classList.remove("main_menu-active");
     main.classList.remove("main-active");
     menuButton.classList.remove("button-active");
-    body.classList.remove("ovhide");
+    mainMenu.setAttribute("aria-hidden", "true");
+    menuButton.setAttribute("aria-expanded", "false");
+    if (html.clientWidth > 620) {
+      body.classList.remove("ovhide");
+    }
   }
 };
 
@@ -111,26 +118,27 @@ const openMenu = () => {
     mainMenu.classList.add("main_menu-active");
     main.classList.add("main-active");
     menuButton.classList.add("button-active");
-    body.classList.add("ovhide");
+    mainMenu.setAttribute("aria-hidden", "false");
+    menuButton.setAttribute("aria-expanded", "true");
+    if (html.clientWidth > 620) {
+      body.classList.add("ovhide");
+    }
   }
 };
 
 // change menu icon
 const changeBurger = () => {
-  const bars = `<i class="fas fa-bars"></i> Menu`;
-  const cross = `<i class="fas fa-times"></i> Menu`;
+  const bars = `<i class="fas fa-bars"></i> <span class="menu-text">Menu</span>`;
+  const cross = `<i class="fas fa-times"></i> <span class="menu-text">Menu</span>`;
 
-  menuButton.innerHTML != bars
-    ? (menuButton.innerHTML = bars)
-    : (menuButton.innerHTML = cross);
+  if (menuButton.dataset.status == "active") {
+    menuButton.innerHTML = cross;
+    menuButton.dataset.status = "closed";
+  } else {
+    menuButton.innerHTML = bars;
+    menuButton.dataset.status = "active";
+  }
 };
-
-// place sections next to each other in row
-if (html.clientWidth > 620) {
-  [].forEach.call(content, (el, i) => {
-    el.style.left = i * 100 + "%";
-  });
-}
 
 // display selected section
 const swipeSection = current => {
